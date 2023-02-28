@@ -32,6 +32,8 @@ db.once("open", function () {
 // **** Routes **** //
 app.post("/api/signup", userController.createUser);
 
+app.post("/api/login", userController.loginUser);
+
 // **** Server **** //
 const port = process.env.PORT || 6500;
 

@@ -4,7 +4,7 @@ import "./SignUp.css";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
-import { Link, Box } from "@mui/material";
+import { Link, Box, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 export default function SignUp() {
@@ -79,9 +79,17 @@ export default function SignUp() {
           >
             Create account
           </Button>
-          <Link component={RouterLink} to="/register">
-            Register
-          </Link>
+          <Typography variant="body1">
+            Already have an account?{" "}
+            <Link
+              component={RouterLink}
+              underline="none"
+              to="/login"
+              color="primary"
+            >
+              log in
+            </Link>
+          </Typography>
         </Box>
       </Container>
     </div>
