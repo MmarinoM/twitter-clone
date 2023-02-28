@@ -1,9 +1,15 @@
 const User = require("../models/userModel");
 
-exports.createUser = (req, res) => {
+exports.createUser = async (req, res) => {
   // récupérer les données de l'utilisateur à partir de la demande (req)
+  const { email } = req.body;
   const userData = req.body;
-  console.log(userData);
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+    return res
+      .status(409)
+      .json({ message: "L'adresse e-mail est déjà utilisée" });
+  }
 
   // créer une nouvelle instance de l'utilisateur à partir du modèle
   const newUser = new User(userData);
